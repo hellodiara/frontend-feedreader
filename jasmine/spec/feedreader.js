@@ -9,10 +9,8 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
-    /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
+
+    // Test suite: RSS Feeds
     describe('RSS Feeds', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
@@ -74,7 +72,7 @@ $(function() {
             
             menu.click();
             expect(body.classList.contains('menu-hidden')).toBe(false);
-            //TO DO: off test
+            //off test
             menu.click();
             expect(body.classList.contains('menu-hidden')).toBe(true);
 
@@ -109,21 +107,24 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         // Load multiple feeds and compare to make sure the content changes
          beforeEach(function(done) {
+            // Load first feed
             loadFeed(0);
-            array.from(feed.children).forEach(function(entry) {
+            // Store the values of the first feed
+            Array.from(feed.children).forEach(function(entry) {
                 firstFeed.push(entry.innerText);
             });
+            // Load second feed
             loadFeed(1, done);
          });
 
          it('content changes', function() {
             Array.from(feed.children).forEach(function(entry, index) {
                 console.log(entry.innerText, firstFeed[index], entry.innerText === firstFeed[index]);
-                expect(entry.innerText === firstFeed[]).toBe(false);
+                expect(entry.innerText === firstFeed[index]).toBe(false);
             });
          });  
-
-
+    });
 
 }());
