@@ -10,5 +10,5 @@ Review the Feed Reader Testing [Project Rubric](https://review.udacity.com/#!/pr
 * Check the feeds and test suites
 
 ## Build With/ Credits
-Udacity - Provided the web RSS feed reader app
-Jasmine - Testing Framework
+* Udacity - Provided the web RSS feed reader app
+* Jasmine - Testing Framework
