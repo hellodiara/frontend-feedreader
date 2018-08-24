@@ -73,16 +73,18 @@ $(function() {
             const feed = document.querySelector('.feed');
             const firstFeed = [];
 
-         beforeEach( (done) => {
+        beforeEach( (done) => {
             // Load first feed
-            loadFeed(0);
-            // Store the values of the first feed
-            Array.from(feed.children).forEach( (entry) => {
-                firstFeed.push(entry.innerText);
-            });
-            // Load second feed
-            loadFeed(1, done);
-         });
+            loadFeed(0, function() {
+                // Store the values of the first feed
+                Array.from(feed.children).forEach( (entry) => {
+                    firstFeed.push(entry.innerText);
+                });
+                // Load second feed
+                loadFeed(1, done);
+             });
+
+        });
 
          it('content changes', () => {
             Array.from(feed.children).forEach( (entry, index) => {
