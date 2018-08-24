@@ -11,21 +11,21 @@
 $(function() {
 
     // Test suite: RSS Feeds
-    describe('RSS Feeds', function() {
+    describe('RSS Feeds', () => {
         
-        it('are defined', function() {
+        it('are defined', () => {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
 
-         it('url defined', function() {
+         it('url defined', () => {
             for(let feed of allFeeds) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
             }
          });
 
-         it('name defined', function() {
+         it('name defined', () => {
             for(let feed of allFeeds) {
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
@@ -34,15 +34,15 @@ $(function() {
     });
 
     // Test suite: Menu
-    describe('The Menu', function() {
+    describe('The Menu', () => {
 
-         it('is hidden', function() {
+         it('is hidden', () => {
             const body = document.querySelector('body');
             expect(body.classList.contains('menu-hidden')).toBe(true);
 
          });
 
-        it('toggles on and off', function() {
+        it('toggles on and off', () => {
             const body = document.querySelector('body');
             const menu = document.querySelector('.menu-icon-link');
             
@@ -58,35 +58,34 @@ $(function() {
        
 
     // Test suite: Initial Entries
-    describe('Initial Entries', function() {
+    describe('Initial Entries', () => {
 
-         beforeEach(function(done) {
+         beforeEach( (done) => {
             loadFeed(0, done)
          });
 
-         it('completes work', function() {
-            const feed = document.querySelector('.feed');
-            expect(('feed .entry').length > 0).toBe(true);
+         it('completes work', () => {
+            expect($('.feed .entry').length > 0).toBe(true);
          });
     });
     // Test suite: New Feed Selection
-    describe('New Feed Selection', function() {
+    describe('New Feed Selection', () => {
             const feed = document.querySelector('.feed');
             const firstFeed = [];
 
-         beforeEach(function(done) {
+         beforeEach( (done) => {
             // Load first feed
             loadFeed(0);
             // Store the values of the first feed
-            Array.from(feed.children).forEach(function(entry) {
+            Array.from(feed.children).forEach( (entry) => {
                 firstFeed.push(entry.innerText);
             });
             // Load second feed
             loadFeed(1, done);
          });
 
-         it('content changes', function() {
-            Array.from(feed.children).forEach(function(entry, index) {
+         it('content changes', () => {
+            Array.from(feed.children).forEach( (entry, index) => {
                 expect(entry.innerText === firstFeed[index]).toBe(false);
             });
          });  
